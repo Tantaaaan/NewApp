@@ -1,0 +1,354 @@
+html {
+        scroll-behavior: smooth;
+    }
+
+/* Basic Reset and Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light Gray Background */
+    color: #333; /* Dark Gray Text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* About Me Section */
+#about .text-content {
+    font-size: 18px; /* Adjust this value as needed */
+    line-height: 1.6; /* Adjust line height for better readability */
+}
+
+#about h2 {
+    font-size: 28px; /* Larger font size for section title */
+}
+
+#about p {
+    font-size: 18px; /* Larger font size for paragraphs */
+}
+
+/* Optional: Adjust image size if needed */
+#about img {
+    width: 100%; /* Ensure image fits the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Landing Page Styles */
+#landing-page {
+    background-color: #364667; /* Black */
+    color: #fff; /* White */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#landing-page h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+}
+
+#landing-page p {
+    font-size: 1.2em;
+}
+
+#enter-button {
+    font-size: 1.2em;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1B253C; /* Medium Gray */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#enter-button:hover {
+    background-color: #9CA5B6; /* Light Gray */
+    transform: scale(1.05);
+}
+
+/* Main Content Styles */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows the content to grow and push the footer to the bottom */
+    background-color: #F1F6F9;
+}
+.circular-image {
+    width: 200px; /* Set the width and height to the same value */
+    height: 200px;
+    border-radius: 100%; /* This makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+}
+
+
+/* Header and Navigation */
+header {
+    background-color: #1B253C; /* Black */
+    color: #fff; /* White */
+    padding: 15px;
+    text-align: center;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top of other content */
+    border-bottom: 1px solid #ddd; /* Optional: Adds a subtle border */
+    padding: 10px 0; /* Adjust padding as needed */
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff; /* White */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav ul li a:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
+/* Section Styles */
+section {
+    background-color: #fff; /* White */
+    color: #333; /* Dark Gray Text */
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.content-wrapper img {
+    max-width: 30%; /* Smaller Image */
+    height: auto;
+    margin-right: 15px; /* Reduced Margin */
+    border-radius: 8px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #000; /* Black */
+    margin-top: 0;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    color: ghostwhite;
+}
+
+/* General Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between cards as needed */
+    justify-content: center;
+}
+
+/* Flip Card Styles */
+.flip-card {
+    background-color: transparent;
+    width: 300px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back of the Card */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures no overflow outside the card */
+
+}
+
+.flip-card-front {
+    background-color: #364667;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+    border-bottom: 1px solid #ddd; /* Optional: adds a border below the image */
+}
+
+.flip-card-back {
+    background-color: #364667;
+    color: ghostwhite; /* Dark gray text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Educational Background Section */
+/* General card container styling */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards */
+    margin-top: 20px;
+}
+
+.education-card {
+    background-color: #364667;;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust the width as needed */
+    text-align: center;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.education-card img {
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+.education-content {
+    padding: 15px;
+}
+
+.education-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.education-card p {
+    font-size: 16px;
+    color: ghostwhite;
+}
+
+.education-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the contact section */
+#contact .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#contact img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#contact .text-content {
+    max-width: 600px; /* Adjust the max-width to fit your design */
+}
+
+#contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#contact ul li {
+    margin-bottom: 10px;
+}
+
+#contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+    color: #1B253C;
+}
+
+/* Style for social media icons */
+.social-media {
+    margin-top: 20px;
+    color: #1B253C;
+}
+
+.social-icon {
+    color: #1B253C;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icon i:hover {
+    color: #1B253C;
+}
+
+.social-icon i {
+    color: #1B253C;
+}
+.text-content li {
+    color: #1B253C;
+}
+
+footer {
+    background-color: #1B253C; /* Black */
+    color: #fff; /* White */
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Ensure it's relative to flow with other content */
+    margin-top: auto; /* Pushes footer to the bottom of the page if using flexbox */
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Layout</title>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+            <img src="../logo.png" alt="Store Logo" />
+            TechTuneTrends
+            </a>
+        </div>
+        <div class="navbar">
+            <nav>
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#featured">Featured Products</a>
+                <a href="../index.html#others">Other Products</a>
+                <a onclick="window.location.href='../group/try.html'" id="about">About Us</a>
+                <a onclick="window.location.href='../BlogPost/blog.html'" id="blog">Blog</a>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span id="username-display" class="username">Username</span>
+                </a>  
+                <a id="login-logout-button" class="logout-button">
+                    <i class="fas fa-sign-in-alt" id="login-logout-icon"></i>   
+                    <span id="login-logout-text">Login</span>   
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        <aside class="sidebar">
+            <h2>Latest Blog Posts</h2>
+            <ul>
+                <li>
+                    <div class="post-image" data-content="post1">
+                        <img src="sam.jpg" alt="Post 1 Image">
+                        <div class="title-overlay">Samsung Galaxy Z Fold 5: Revolutionizing the Foldable Experience</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="post-image" data-content="post2">
+                        <img src="canon.jpg" alt="Post 2 Image">
+                        <div class="title-overlay"> Exploring the Future of Photography: The New Canon EOS R5 Mark II</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="post-image" data-content="post3">
+                        <img src="trombone.jpg" alt="Post 3 Image">
+                        <div class="title-overlay">The Trombone Evolution: Exploring the Latest Advancements in Trombone Design</div>
+                    </div>
+                </li>
+                    <div class="post-image" data-content="post4">
+                        <img src="collab.jpg" alt="Post 4 Image">
+                        <div class="title-overlay">Collaboration of TechTuneTrends from its four partner stores</div>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+        
+        <section class="content">
+            <div id="post-content" class="featured-post">
+                <p>Select a blog post to view its content here.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechTuneTrend Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to display the username
+        function logoutUser() {
+            // Clear the login flag
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('username');
+            // Redirect to the login page
+            window.location.href = '../login.html';
+        }
+        function displayUsername() {
+            const username = sessionStorage.getItem('username'); // Retrieve the username from local storage
+            const usernameDisplay = document.getElementById('username-display');
+            
+            if (username) {
+                usernameDisplay.textContent = username; // Display the username
+            } else {
+                usernameDisplay.textContent = 'Guest'; // Default text if no username is found
+            }
+        }
+        function setLoginLogoutButton() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn'); // Check login state
+            const loginLogoutButton = document.getElementById('login-logout-button');
+            const loginLogoutIcon = document.getElementById('login-logout-icon');
+            const loginlogouttext = document.getElementById('login-logout-text');
+            if (isLoggedIn) {
+                // If logged in, show 'Logout' and set click event to logout
+                loginLogoutIcon.classList.remove('fa-sign-in-alt');
+                loginLogoutIcon.classList.add('fa-sign-out-alt');
+                loginlogouttext.textContent = 'Logout';
+                loginLogoutButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    logoutUser(); // Call the logout function
+                });
+            } else {
+                // If not logged in, show 'Login' and set click event to redirect to login page
+                loginLogoutIcon.classList.remove('fa-sign-out-alt');
+                loginLogoutIcon.classList.add('fa-sign-in-alt');
+                loginlogouttext.textContent = 'Login';
+                loginLogoutButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    window.location.href = '../login.html'; // Redirect to login page
+                });
+            }
+        }
+
+        // Call the function to update the username display when the page loads
+        displayUsername();
+        setLoginLogoutButton();
+
+        // Example of setting the username (e.g., during login)
+        // localStorage.setItem('username', 'Nathaniel');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define the content for each blog post
+            const contentMap = {
+                post1: `
+                    <center><img src="sam.jpg" alt="Featured Image"></center>
+                    <div class="post-info">
+                        <h2>Samsung Galaxy Z Fold 5: Revolutionizing the Foldable Experience</h2>
+                        <p>Date: August 15, 2024</p>
+                        <p>Samsung's latest innovation, the Galaxy Z Fold 5, continues to push the boundaries of foldable technology. With a refined hinge mechanism and a sleeker design, the Z Fold 5 offers a more seamless folding experience than its predecessors. The device boasts a 7.6-inch QXGA+ Dynamic AMOLED 2X main display, an upgraded S Pen, and improved multitasking capabilities. Samsung has also focused on enhancing durability, with Gorilla Glass Victus+ and an IPX8 water resistance rating. This blog post provides an in-depth look at these features, user experiences, and comparisons with other foldable phones on the market. For more details, visit Samsung’s official blog or news section.</p>
+                    </div>
+                `,
+                post2: `
+                    <center><img src="canon.jpg" alt="Featured Image"></center>
+                    <div class="post-info">
+                        <h2> Exploring the Future of Photography: The New Canon EOS R5 Mark II</h2>
+                        <p>January 2024</p>
+                        <p>Canon has unveiled its latest innovation in mirrorless cameras, the EOS R5 Mark II, setting new standards in photography and videography. This flagship model features a cutting-edge 45-megapixel full-frame sensor, offering exceptional image quality with enhanced low-light performance. The camera introduces a new Dual Pixel CMOS AF III system, which significantly improves autofocus accuracy and speed. Additionally, the R5 Mark II supports 8K video recording at 30fps and includes advanced features like in-body image stabilization and a 5.76 million-dot OLED electronic viewfinder. The blog post delves into the technical advancements, user testimonials, and comparisons with its predecessors, highlighting how this new model caters to both professional photographers and enthusiasts. For a more detailed exploration, check out Canon’s official blog or website.</p>
+                    </div>
+                `,
+                post3: `
+                    <center><img src="trombone.jpg" alt="Featured Image"></center>
+                    <div class="post-info">
+                        <h2>The Trombone Evolution: Exploring the Latest Advancements in Trombone Design</h2>
+                        <p>December 2024</p>
+                        <p>Summary:<br>The trombone, a staple in brass ensembles and jazz bands, has seen significant advancements in design and technology. The latest models blend traditional craftsmanship with modern innovation to enhance performance and versatility.<br>Key Features:<br>Enhanced Slide Mechanism: New trombones feature a refined slide mechanism for smoother and more precise movement. This innovation reduces resistance and allows for quicker slide action, improving overall playability.<br>Customizable Fittings: Modern trombones offer customizable slide and bell fittings, allowing musicians to tailor the instrument's response and tone to their personal preferences. This flexibility is ideal for both classical and contemporary styles.<br>Advanced Materials: The use of advanced alloys and composite materials in construction enhances durability and reduces weight, making the trombone easier to handle without compromising sound quality.<br>Improved Ergonomics: Design improvements focus on ergonomic considerations, such as adjustable grips and more balanced weight distribution, providing greater comfort during long practice sessions and performances.<br>Conclusion:<br>Whether you’re a seasoned trombonist or just starting, the latest advancements in trombone design offer exciting opportunities for improved performance and personalization. Embrace these innovations to elevate your musical expression and explore new creative possibilities.</p>
+                    </div>
+                `,
+                post4: `
+                    <center><img src="collab.jpg" alt="Featured Image"></center>
+                    <div class="post-info">
+                        <h2>Collaboration of TechTuneTrends from its four partner stores</h2>
+                        <p>August 2024</p>
+                        <p>Summary:<br>In an unprecedented move, four leading brands—Maki's Apparel, TechZone, JB's Store, and Trombone Haven—have come together to create TechTuneTrends, a cutting-edge shopping website that redefines the online retail experience. This collaboration merges fashion, technology, lifestyle, and music into one seamless platform, offering an unparalleled selection of products and services.<br>The Collaboration:<br>Maki's Apparel: Known for its stylish and high-quality clothing, Maki's Apparel brings its fashion-forward approach to TechTuneTrends. Customers can now explore an exclusive range of clothing and accessories that reflect the latest trends in the fashion industry.<br>TechZone: As a leader in the tech world, TechZone adds its expertise in gadgets and electronics to the mix. From the latest smartphones and laptops to innovative smart home devices, TechZone ensures that TechTuneTrends offers cutting-edge technology to enhance your lifestyle.<br>JB's Store: JB's Store, a favorite for home essentials and unique finds, contributes its diverse product range to the platform. Shoppers can access everything from kitchen gadgets to home decor, all curated for convenience and quality.<br>Trombone Haven: Celebrated for its specialty in musical instruments, Trombone Haven joins the collaboration with a focus on brass instruments and accessories. Whether you're a professional musician or a hobbyist, the site provides top-tier trombones and related gear.<br>Key Features of TechTuneTrends:<br>Unified Shopping Experience: A single platform where fashion, technology, home goods, and musical instruments converge, providing a streamlined and efficient shopping experience.<br>Personalized Recommendations: Advanced algorithms and curated collections ensure that each shopper receives personalized recommendations tailored to their interests and needs.<br>Exclusive Offers and Bundles: Enjoy special discounts and bundle offers from all four brands, enhancing the value and appeal of your purchases.<br>Seamless Integration: Navigate between categories effortlessly with a user-friendly interface that integrates the diverse offerings of Maki's Apparel, TechZone, JB's Store, and Trombone Haven.<br>Conclusion:<br>TechTuneTrends represents a groundbreaking fusion of style, innovation, and convenience. By combining the strengths of Maki's Apparel, TechZone, JB's Store, and Trombone Haven, this new shopping destination sets a new standard in the retail world. Explore TechTuneTrends today and experience the future of shopping where your favorite brands come together to deliver excellence.</p>
+                    </div>
+                `
+                
+            };
+
+
+
+            function setContent(postId) {
+                const content = contentMap[postId];
+                document.getElementById('post-content').innerHTML = content;
+            }
+
+            setContent('post1');
+
+            const images = document.querySelectorAll('.post-image');
+            
+            images.forEach(image => {
+                image.addEventListener('click', () => {
+                    const postId = image.getAttribute('data-content');
+                    setContent(postId);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

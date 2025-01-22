@@ -1,0 +1,9 @@
+{
+  "rules": {
+    ".read": "now < 1727020800000",
+		".write": "now < 1727020800000",
+      "users": {
+      ".indexOn": ["username"]
+    }
+  }
+}
